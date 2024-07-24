@@ -14,16 +14,13 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // Animação de rolagem
 window.addEventListener("scroll", function () {
   const sections = document.querySelectorAll(".section");
-  const scrollPos = window.scrollY + window.innerHeight / 2;
+  const scrollPos = window.scrollY + window.innerHeight;
 
   sections.forEach((section) => {
-    if (
-      scrollPos >= section.offsetTop &&
-      scrollPos <= section.offsetTop + section.offsetHeight
-    ) {
-      section.style.backgroundColor = "#e0e0e0";
+    if (section.offsetTop < scrollPos) {
+      section.style.backgroundColor = "#f0f8ff";
     } else {
-      section.style.backgroundColor = "transparent";
+      section.style.backgroundColor = "#f4f4f4";
     }
   });
 });
