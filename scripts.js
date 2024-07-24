@@ -1,26 +1,48 @@
-// scripts.js
+document.addEventListener("DOMContentLoaded", function () {
+  const loader = document.querySelector(".loader");
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => (loader.style.display = "none"), 500);
+  }, 1500);
 
-// Exemplo de um script para rolagem suave
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
+  const sections = document.querySelectorAll(".animate");
 
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
-  });
-});
-
-// Animação de rolagem
-window.addEventListener("scroll", function () {
-  const sections = document.querySelectorAll(".section");
-  const scrollPos = window.scrollY + window.innerHeight;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    }
+  );
 
   sections.forEach((section) => {
-    if (section.offsetTop < scrollPos) {
-      section.style.backgroundColor = "#f0f8ff";
-    } else {
-      section.style.backgroundColor = "#f4f4f4";
-    }
+    observer.observe(section);
+  });
+
+  const form = document.getElementById("contact-form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    }).then((response) => {
+      if (response.ok) {
+        alert("Obrigado pela sua mensagem!");
+        form.reset();
+      } else {
+        alert("Oops! Ocorreu um erro ao enviar sua mensagem.");
+      }
+    });
   });
 });

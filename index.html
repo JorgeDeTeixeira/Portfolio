@@ -15,6 +15,10 @@
     />
   </head>
   <body>
+    <div class="loader">
+      <div class="spinner"></div>
+    </div>
+
     <header>
       <nav>
         <div class="container">
@@ -33,9 +37,9 @@
 
     <section id="inicio" class="section">
       <div class="container">
-        <h1>Bem-vindo ao meu Portfólio</h1>
-        <p>Sou Jorge Teixeira, Desenvolvedor Back-end Java.</p>
-        <a href="#projetos" class="btn">Veja meus Projetos</a>
+        <h1 class="animate">Bem-vindo ao meu Portfólio</h1>
+        <p class="animate">Sou Jorge Teixeira, Desenvolvedor Back-end Java.</p>
+        <a href="#projetos" class="btn animate">Veja meus Projetos</a>
       </div>
     </section>
 
@@ -53,7 +57,17 @@
       <div class="container">
         <h2>Projetos</h2>
         <div class="project-grid">
-          <!-- Adicione aqui seus projetos -->
+          <div class="project animate">
+            <img src="project1.jpg" alt="Projeto 1" />
+            <h3>Projeto 1</h3>
+            <p>Descrição do projeto 1.</p>
+          </div>
+          <div class="project animate">
+            <img src="project2.jpg" alt="Projeto 2" />
+            <h3>Projeto 2</h3>
+            <p>Descrição do projeto 2.</p>
+          </div>
+          <!-- Adicione mais projetos conforme necessário -->
         </div>
       </div>
     </section>
@@ -69,7 +83,11 @@
       <div class="container">
         <h2>Habilidades</h2>
         <div class="skills">
-          <!-- Adicione aqui suas habilidades -->
+          <div class="skill animate">
+            <i class="fab fa-java"></i>
+            <p>Java</p>
+          </div>
+          <!-- Adicione mais habilidades conforme necessário -->
         </div>
       </div>
     </section>
